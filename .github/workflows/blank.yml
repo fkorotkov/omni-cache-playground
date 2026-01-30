@@ -21,6 +21,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
       - name: Calculate the cache key to use (YYYY-MM-DD)
         run: echo "CACHE_KEY=$(date +%Y-%m-%d)" >> $GITHUB_ENV
       - name: Generate a random 500Mb binary file on cache miss
