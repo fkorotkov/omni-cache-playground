@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Setup omni-cache
         id: cache
-        uses: cirruslabs/setup-omni-cache@v1
+        uses: cirruslabs/setup-omni-cache@v1.0.0
         with:
           bucket: ci-omni-cache
           s3-endpoint: ${{ secrets.S3_ENDPOINT }}
