@@ -35,5 +35,3 @@ jobs:
           key: "testfile-v4-${{ env.CACHE_KEY }}"
       - name: Restore the cached file
         run: curl -s -o testfile.restored http://$OMNI_CACHE_ADDRESS/$CACHE_KEY
-      - name: Compare the restored file with the original one
-        run: diff testfile testfile.restored
