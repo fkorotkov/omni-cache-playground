@@ -27,4 +27,6 @@ jobs:
       - name: Generate a random 500Mb binary file on cache miss
         run: dd if=/dev/urandom of=testfile bs=65536 count=8192
       - name: Upload the generated file to Omni Cache
-        run: curl -s -X POST --data-binary @testfile.tar.gz http://$OMNI_CACHE_HOST/$CACHE_KEY
+        run: curl -s -X POST --data-binary @testfile http://$OMNI_CACHE_HOST/$CACHE_KEY
+        env:
+          OMNI_CACHE_HOST: ${{ steps.cache.outputs.host }}
