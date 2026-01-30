@@ -29,7 +29,6 @@ jobs:
       - name: Upload the generated file to Omni Cache
         run: curl -s -X POST --data-binary @testfile http://$OMNI_CACHE_ADDRESS/$CACHE_KEY
       - name: Cache a random binary file using cirruslabs/cache@v4
-        id: cache
         uses: "cirruslabs/cache@v5"
         with:
           path: testfile
