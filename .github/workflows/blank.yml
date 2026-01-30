@@ -28,3 +28,12 @@ jobs:
         run: dd if=/dev/urandom of=testfile bs=65536 count=8192
       - name: Upload the generated file to Omni Cache
         run: curl -s -X POST --data-binary @testfile http://$OMNI_CACHE_ADDRESS/$CACHE_KEY
+      - name: Cache node modules
+        uses: cirruslabs/cache@v5
+        with:
+          path: testfile
+          key: {{ env.CACHE_KEY }}
+      - name: Restore the cached file
+        run: curl -s -o testfile.restored http://$OMNI_CACHE_ADDRESS/$CACHE_KEY
+      - name: Compare the restored file with the original one
+        run: diff testfile testfile.restored
